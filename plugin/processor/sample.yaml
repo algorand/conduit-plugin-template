@@ -1,0 +1,4 @@
+name: processor_template
+config:
+  config_string: "This is a sample config string"
+  config_int: 42
