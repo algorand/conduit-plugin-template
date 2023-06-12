@@ -13,6 +13,8 @@ See the `plugin` package for an example of each available plugin interface.
 3. Build the project: `make conduit`
 4. Test the project: `make run`, and follow the printed instructions.
 
+See the [documentation](https://developer.algorand.org/docs/get-details/conduit/Development/) for more.
+
 ## Overview
 
 This template project provides you with everything to get started with a
