@@ -56,16 +56,19 @@ func (it *importerTemplate) Close() error {
 	return nil
 }
 
-func (it *importerTemplate) Init(_ context.Context, _ data.InitProvider, cfg plugins.PluginConfig, logger *logrus.Logger) (*types.Genesis, error) {
+func (it *importerTemplate) Init(_ context.Context, _ data.InitProvider, cfg plugins.PluginConfig, logger *logrus.Logger) error {
 	it.log = logger
 	if err := cfg.UnmarshalConfig(&it.cfg); err != nil {
-		return nil, fmt.Errorf("unable to read configuration: %w", err)
+		return fmt.Errorf("unable to read configuration: %w", err)
 	}
 
 	// TODO: Your init logic here.
 
-	genesis := types.Genesis{}
-	return &genesis, nil
+	return nil
+}
+
+func (it *importerTemplate) GetGenesis() (*types.Genesis, error) {
+	return &types.Genesis{}, nil
 }
 
 func (it *importerTemplate) GetBlock(rnd uint64) (data.BlockData, error) {

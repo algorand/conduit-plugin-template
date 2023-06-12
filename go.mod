@@ -3,7 +3,7 @@ module github.com/algorand/conduit-plugin-template
 go 1.17
 
 require (
-	github.com/algorand/conduit v1.1.1-0.20230605145109-6c4517305500
+	github.com/algorand/conduit v1.1.1-0.20230612142801-e48bac26bcdc
 	github.com/algorand/go-algorand-sdk/v2 v2.0.0-20230531123858-3a0efd6a6398
 	github.com/sirupsen/logrus v1.8.1
 	github.com/spf13/cobra v1.3.0 // indirect
