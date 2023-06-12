@@ -3,8 +3,8 @@ module github.com/algorand/conduit-plugin-template
 go 1.17
 
 require (
-	github.com/algorand/conduit v1.1.1-0.20230505152226-79fb4fde85d8
-	github.com/algorand/go-algorand-sdk/v2 v2.0.0-20230324200319-055c8d2b174a
+	github.com/algorand/conduit v1.1.1-0.20230605145109-6c4517305500
+	github.com/algorand/go-algorand-sdk/v2 v2.0.0-20230531123858-3a0efd6a6398
 	github.com/sirupsen/logrus v1.8.1
 	github.com/spf13/cobra v1.3.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0
@@ -13,7 +13,7 @@ require (
 require (
 	github.com/algorand/avm-abi v0.2.0 // indirect
 	github.com/algorand/go-codec/codec v1.1.8 // indirect
-	github.com/algorand/indexer v0.0.0-20230315150109-cf0074cfd4ed // indirect
+	github.com/algorand/indexer v0.0.0-20230601214318-cb2f42818f82 // indirect
 	github.com/algorand/oapi-codegen v1.12.0-algorand.0 // indirect
 	github.com/apapsch/go-jsonmerge/v2 v2.0.0 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect

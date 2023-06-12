@@ -57,7 +57,7 @@ func (et *exporterTemplate) Close() error {
 
 func (et *exporterTemplate) Init(_ context.Context, ip data.InitProvider, cfg plugins.PluginConfig, logger *logrus.Logger) error {
 	et.log = logger
-	if err := cfg.UnmarshalConfig(et.cfg); err != nil {
+	if err := cfg.UnmarshalConfig(&et.cfg); err != nil {
 		return fmt.Errorf("unable to read configuration: %w", err)
 	}
 
@@ -67,6 +67,7 @@ func (et *exporterTemplate) Init(_ context.Context, ip data.InitProvider, cfg pl
 }
 
 func (et *exporterTemplate) Receive(exportData data.BlockData) error {
+	et.log.Infof("Processing block %d", exportData.Round())
 
 	// TODO: Your receive block data logic here.
 
@@ -74,16 +75,17 @@ func (et *exporterTemplate) Receive(exportData data.BlockData) error {
 		et.log.Tracef("%v", txn)
 	}
 
-	for _, acct := range exportData.Delta.Accts.Accts {
-		et.log.Tracef("%v", acct)
-	}
-
-	for _, asset := range exportData.Delta.Accts.AssetResources {
-		et.log.Tracef("%v", asset)
-	}
-
-	for _, app := range exportData.Delta.Accts.AppResources {
-		et.log.Tracef("%v", app)
+	// Delta is only available with a follower importer.
+	if exportData.Delta != nil {
+		for _, acct := range exportData.Delta.Accts.Accts {
+			et.log.Tracef("%v", acct)
+		}
+		for _, asset := range exportData.Delta.Accts.AssetResources {
+			et.log.Tracef("%v", asset)
+		}
+		for _, app := range exportData.Delta.Accts.AppResources {
+			et.log.Tracef("%v", app)
+		}
 	}
 
 	return nil

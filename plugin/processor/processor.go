@@ -3,6 +3,8 @@ package processor
 import (
 	"context"
 	_ "embed"
+	"fmt"
+
 	"github.com/sirupsen/logrus"
 	"gopkg.in/yaml.v2"
 
@@ -53,7 +55,11 @@ func (pt *processorTemplate) Close() error {
 	return nil
 }
 
-func (pt *processorTemplate) Init(_ context.Context, _ data.InitProvider, _ plugins.PluginConfig, _ *logrus.Logger) error {
+func (pt *processorTemplate) Init(_ context.Context, _ data.InitProvider, cfg plugins.PluginConfig, log *logrus.Logger) error {
+	pt.log = log
+	if err := cfg.UnmarshalConfig(&pt.cfg); err != nil {
+		return fmt.Errorf("unable to read configuration: %w", err)
+	}
 
 	// TODO: Your init code here.
 
@@ -61,6 +67,7 @@ func (pt *processorTemplate) Init(_ context.Context, _ data.InitProvider, _ plug
 }
 
 func (pt *processorTemplate) Process(input data.BlockData) (data.BlockData, error) {
+	pt.log.Infof("Processing block %d", input.Round())
 
 	// TODO: Your processing code here.
 

@@ -1,0 +1,6 @@
+Dockerfile
+.goreleaser.yaml
+.idea
+dist/
+/cmd/conduit/conduit
+run_data/

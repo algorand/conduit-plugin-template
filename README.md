@@ -6,10 +6,31 @@ See the `plugin` package for an example of each available plugin interface.
 
 ## Quickstart
 
-The plugins are all properly registered with the `main.go` function which
-exposes all of the upstream utilities. For example, see the 3 template plugins in the `list` subcommand:
+1. Install dependencies:
+    * A terminal with `make` and `bash` available.
+    * [Go build environment](https://go.dev/doc/install)
+2. Build the project: `make conduit`
+3. Test the project: `make run`, and follow the printed instructions.
+
+
+## Overview
+
+This template project provides you with everything to get started with a
+Conduit plugin. This includes:
+* boilerplate implementations of each plugin, registered and ready to use.
+* integration test to quickly run your plugin.
+* release process to cross compiled artifacts and docker images.
+
+### Boilerplate
+
+The interfaces are implemented and demonstrate how to build, configure and
+register each of the different plugin types with the Conduit framework.
+
+An example `main.go` pulls together the upstream plugins, the local plugins,
+and launches the standard Conduit CLI along with all of the config utilities.
+For example, see the 3 template plugins in the `list` subcommand:
 ```bash
-> go run cmd/main.go list
+> go run cmd/conduit/main.go list
 importers:
   algod             - Importer for fetching blocks from an algod REST API.
   file_reader       - Importer for fetching blocks from files in a directory created by the 'file_writer' plugin.
@@ -29,16 +50,16 @@ exporters:
 
 The config samples are also available:
 ```bash
-> go run cmd/main.go list importers importer_template
+> go run cmd/conduit/main.go list importers importer_template
 name: importer_template
 config:
   config_string: "This is a sample config string"
   config_int: 42
 ```
 
-Finally, they are also available with the `init` subcommand:
+Finally, the `init` command can be used to create a configuration template:
 ```bash
-> go run cmd/main.go init --importer importer_template --processors processor_template --exporter exporter_template
+> go run cmd/conduit/main.go init --importer importer_template --processors processor_template --exporter exporter_template
 ... global config omitted ...
 
 # The importer is typically an algod follower node.
@@ -48,7 +69,6 @@ config:
   config_string: "This is a sample config string"
   config_int: 42
 
-
 # Zero or more processors may be defined to manipulate what data
 # reaches the exporter.
 processors:
@@ -56,7 +76,6 @@ processors:
     config:
       config_string: "This is a sample config string"
       config_int: 42
-    
 
 # An exporter is defined to do something with the data.
 exporter:
@@ -65,3 +84,26 @@ config:
   config_string: "This is a sample config string"
   config_int: 42
 ```
+
+### Testing
+
+A simple configuration is available to quickly launch your project. The
+`make run` target will build your project, configure a data directory, and
+offer up a few commands for different ways to run it. See the terminal output
+of `make run` for details.
+
+### Release
+
+Goreleaser can be configured with `make release`. It is setup to cross compile
+for multiple platforms, in addition to creating multi-architecture Docker
+images.
+
+There are some additional dependencies to get everything to work:
+* [goreleaser](https://goreleaser.com/install/)
+* Docker
+* QEMU (for docker multi-arch builds)
+* DockerHub credentials / "docker login"
+* Github API Token
+
+If you're interested in going through this process please create an issue here
+or in the upstream Conduit repo. The current support is pretty minimal.

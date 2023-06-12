@@ -58,7 +58,7 @@ func (it *importerTemplate) Close() error {
 
 func (it *importerTemplate) Init(_ context.Context, _ data.InitProvider, cfg plugins.PluginConfig, logger *logrus.Logger) (*types.Genesis, error) {
 	it.log = logger
-	if err := cfg.UnmarshalConfig(it.cfg); err != nil {
+	if err := cfg.UnmarshalConfig(&it.cfg); err != nil {
 		return nil, fmt.Errorf("unable to read configuration: %w", err)
 	}
 
