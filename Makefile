@@ -14,7 +14,7 @@ fmt:
 	go fmt ./...
 
 run: conduit
-	@echo "\nSetting up a trivial processor/exporter config.\n\n"
+	@echo "\nSetting up a trivial processor/exporter config.\n"
 	./build/node.sh
 
 clean:

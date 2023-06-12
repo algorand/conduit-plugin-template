@@ -30,12 +30,15 @@ else
 fi
 
 echo "To customize, modify $CONFIG_FILE and run again."
+echo ""
 
 echo "Data dir configured, run conduit with:"
 echo "  $CONDUIT -d $DATA_DIR"
+echo ""
 
 echo "To start on a specific round:"
 echo "  $CONDUIT -d $DATA_DIR -r 15000000"
+echo ""
 
 echo "For additional round data, setup an algod follower node:"
 echo "1. run docker command:"

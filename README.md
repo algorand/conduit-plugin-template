@@ -7,11 +7,11 @@ See the `plugin` package for an example of each available plugin interface.
 ## Quickstart
 
 1. Install dependencies:
-    * A terminal with `make` and `bash` available.
+    * A terminal with `make`, `bash` and `git` available.
     * [Go build environment](https://go.dev/doc/install)
-2. Build the project: `make conduit`
-3. Test the project: `make run`, and follow the printed instructions.
-
+2. [Fork this project and clone it locally](https://docs.github.com/en/get-started/quickstart/fork-a-repo).
+3. Build the project: `make conduit`
+4. Test the project: `make run`, and follow the printed instructions.
 
 ## Overview
 
