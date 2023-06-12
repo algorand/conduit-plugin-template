@@ -1,4 +1,4 @@
-# Conduitu Plugin Templates
+# Conduit Plugin Templates
 
 Templates to get you started with [Conduit](https://github.com/algorand/conduit) plugin development.
 
