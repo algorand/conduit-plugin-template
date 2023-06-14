@@ -1,7 +1,6 @@
 Output demo.gif
 
 Require docker
-Require yq
 
 Set FontSize 14
 Set Width 640
