@@ -6,14 +6,14 @@ Require yq
 Set FontSize 14
 Set Width 640
 Set Height 360
-Set Padding 10
+Set Padding 15
 Set LoopOffset 0%
 
 # BEGIN image-frame settings
 Set MarginFill background3.png
-Set MarginSize 20
+Set MarginSize 25
 Set WindowBar Colorful
-Set WindowBarSize 30
+Set WindowBarSize 25
 Set CornerRadius 10
 # END
 
