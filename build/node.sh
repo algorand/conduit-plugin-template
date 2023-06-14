@@ -5,49 +5,47 @@ ROOTDIR="$(dirname "$0")"/..
 cd $ROOTDIR
 
 CONDUIT=./cmd/conduit/conduit
-ALGOD=
-TOKEN=
+ALGOD=localhost:4190
+TOKEN=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+ADMIN_TOKEN=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 DATA_DIR=run_data
 CONFIG_FILE=$DATA_DIR/conduit.yml
 
+color() { printf "\033[${1}m"; }
+
+red=$(color "0;31")
+green=$(color "0;32")
+blue=$(color "0;34")
+
+bold_blue=$(color "1;34")
+bold_red=$(color "1;31")
+bold_green=$(color "1;32")
+
+reset=$(color "0")
+
+echo ""
+
 if [ -d $DATA_DIR ]; then
-  echo "Using existing data directory: $DATA_DIR"
+  echo "${bold_red}Using existing configuration file: ${bold_blue}$CONFIG_FILE${reset}"
 else
-  echo "Initializing data directory: $DATA_DIR"
   mkdir $DATA_DIR
   $CONDUIT init --importer algod --processors processor_template --exporter exporter_template > $CONFIG_FILE
 
-  # 1. Configure metrics.
-  # 2. Configure archival mode.
-  # 3. Configure the algod URL.
-  # 4. Configure the non-admin API token.
+  # 1. Enable metrics.
+  # 2. Set algod address.
+  # 3. Set auth tokens.
   sed -i \
-    -e "s/mode: OFF/mode: ON/" \
-    -e 's/mode: "follower"/mode: "archival"/' \
-    -e "s/netaddr: \"http:\/\/url:port\"/netaddr: \"$ALGOD\"/" \
-    -e "s/ token: \"\"/ token: \"$TOKEN\"/" \
+    -e "s,mode: OFF,mode: ON," \
+    -e "s,netaddr: \"http:\/\/url:port\",netaddr: \"$ALGOD\"," \
+    -e "s, token: \"\", token: \"$TOKEN\"," \
+    -e "s,admin-token: \"\",admin-token: \"$ADMIN_TOKEN\"," \
     $CONFIG_FILE
+  echo "${bold_green}Configuration initialized at ${bold_blue}$CONFIG_FILE${reset}."
 fi
 
-echo "To customize, modify $CONFIG_FILE and run again."
 echo ""
-
-echo "Data dir configured, run conduit with:"
-echo "  $CONDUIT -d $DATA_DIR"
-echo ""
-
-echo "To start on a specific round:"
-echo "  $CONDUIT -d $DATA_DIR -r 15000000"
-echo ""
-
-echo "For additional round data, setup an algod follower node:"
-echo "1. run docker command:"
-echo "    docker run --rm -it -p 4190:8080 --name algod-test-run -e ADMIN_TOKEN=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -e TOKEN=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -e PROFILE=conduit -e NETWORK=mainnet algorand/algod:nightly"
-echo "2. update algod section of $CONFIG_FILE:"
-echo "     mode: \"follower\""
-echo "     netaddr: \"localhost:4190\""
-echo "     token: \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa \""
-echo "     admin-token: \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa \""
-echo "3. $CONDUIT -d $DATA_DIR"
+echo "1. Start a node with docker: ${bold_blue}make docker-node${reset}"
+echo "2. Run conduit: ${bold_blue}$CONDUIT -d $DATA_DIR${reset}"
+echo "   Optionally add ${bold_red}-r 28000000${reset} to start on a specific round."
 
 

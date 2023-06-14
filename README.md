@@ -15,6 +15,8 @@ See the `plugin` package for an example of each available plugin interface.
 
 See the [documentation](https://developer.algorand.org/docs/get-details/conduit/Development/) for more.
 
+![Conduit Quickstart](build/demo/demo.gif)
+
 ## Overview
 
 This template project provides you with everything to get started with a

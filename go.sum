@@ -84,10 +84,8 @@ github.com/alecthomas/units v0.0.0-20190924025748-f65c72e2690d/go.mod h1:rBZYJk5
 github.com/algorand/avm-abi v0.1.1/go.mod h1:+CgwM46dithy850bpTeHh9MC99zpn2Snirb3QTl2O/g=
 github.com/algorand/avm-abi v0.2.0 h1:bkjsG+BOEcxUcnGSALLosmltE0JZdg+ZisXKx0UDX2k=
 github.com/algorand/avm-abi v0.2.0/go.mod h1:+CgwM46dithy850bpTeHh9MC99zpn2Snirb3QTl2O/g=
-github.com/algorand/conduit v1.1.1-0.20230605145109-6c4517305500 h1:rWvSpucK7NquT4nB16pgBKucBDCafwS7ddmGtPmbN08=
-github.com/algorand/conduit v1.1.1-0.20230605145109-6c4517305500/go.mod h1:c387ao0EfJ92+SS6zh/pLI323MnkLOH1osKPk3Naf4s=
-github.com/algorand/conduit v1.1.1-0.20230612142801-e48bac26bcdc h1:aKssyyoC1R9suoROHwNYDdRQF5tL8GVYyhx0Fey49Ho=
-github.com/algorand/conduit v1.1.1-0.20230612142801-e48bac26bcdc/go.mod h1:c387ao0EfJ92+SS6zh/pLI323MnkLOH1osKPk3Naf4s=
+github.com/algorand/conduit v1.1.1-0.20230613164928-4c59abcc3e1d h1:GA/UGuuRCVaoyyRtY33S+v2PHknqecp62q8v7CeznBc=
+github.com/algorand/conduit v1.1.1-0.20230613164928-4c59abcc3e1d/go.mod h1:c387ao0EfJ92+SS6zh/pLI323MnkLOH1osKPk3Naf4s=
 github.com/algorand/go-algorand-sdk/v2 v2.0.0-20230526160341-74a095c3f9e3/go.mod h1:Nt3EHpP8AznLs0/EFfhr0/xsVf5ucnvjNeRygGgbUzM=
 github.com/algorand/go-algorand-sdk/v2 v2.0.0-20230531123858-3a0efd6a6398 h1:mvzP4TC3Gip7zGytr/OnFU0O00AbB8IyjhohlxgLUv4=
 github.com/algorand/go-algorand-sdk/v2 v2.0.0-20230531123858-3a0efd6a6398/go.mod h1:Nt3EHpP8AznLs0/EFfhr0/xsVf5ucnvjNeRygGgbUzM=
