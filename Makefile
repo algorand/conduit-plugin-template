@@ -14,10 +14,9 @@ fmt:
 	go fmt ./...
 
 run: conduit
-	@echo "\nSetting up a trivial processor/exporter config.\n"
 	./build/node.sh
 
-clean:
+clean: docker-stop
 	rm -rf run_data
 
 release:
@@ -25,3 +24,21 @@ release:
 	build/sync-config.sh
 	@echo "Build everything with:"
 	@echo "   goreleaser release --skip-publish --snapshot --clean"
+
+docker-node: docker-stop
+	docker run -d -p 4190:8080 --name conduit-template-follower \
+			-e ADMIN_TOKEN=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa \
+			-e TOKEN=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa \
+			-e PROFILE=conduit \
+			-e NETWORK=mainnet \
+			algorand/algod:beta
+
+docker-status:
+		curl -qs -H "Authorization: Bearer aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" "localhost:4190/v2/status?pretty"
+
+docker-stop:
+	docker stop conduit-template-follower > /dev/null 2>&1  || true
+	docker rm conduit-template-follower > /dev/null 2>&1 || true
+
+demo:
+	cd build/demo && vhs < demo.tape
