@@ -10,7 +10,7 @@ Set Padding 15
 Set LoopOffset 0%
 
 # BEGIN image-frame settings
-Set MarginFill background3.png
+Set MarginFill background.png
 Set MarginSize 25
 Set WindowBar Colorful
 Set WindowBarSize 25
