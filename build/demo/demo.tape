@@ -3,18 +3,17 @@ Output demo.gif
 Require docker
 Require yq
 
-Set FontSize 22
-Set Width 1280
-Set Height 720
-Set Padding 20
+Set FontSize 14
+Set Width 640
+Set Height 360
+Set Padding 10
 Set LoopOffset 0%
 
 # BEGIN image-frame settings
-#Set MarginFill "#79B8C3"
-Set MarginFill background.png
-Set MarginSize 40
+Set MarginFill background3.png
+Set MarginSize 20
 Set WindowBar Colorful
-Set WindowBarSize 40
+Set WindowBarSize 30
 Set CornerRadius 10
 # END
 

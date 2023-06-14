@@ -27,11 +27,11 @@ release:
 
 docker-node: docker-stop
 	docker run -d -p 4190:8080 --name conduit-template-follower \
-			-e ADMIN_TOKEN=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa \
-			-e TOKEN=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa \
-			-e PROFILE=conduit \
-			-e NETWORK=mainnet \
-			algorand/algod:beta
+  -e ADMIN_TOKEN=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa \
+  -e TOKEN=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa \
+  -e PROFILE=conduit \
+  -e NETWORK=mainnet \
+  algorand/algod:beta
 
 docker-status:
 		curl -qs -H "Authorization: Bearer aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" "localhost:4190/v2/status?pretty"
