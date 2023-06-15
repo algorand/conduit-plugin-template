@@ -21,9 +21,10 @@ See the [documentation](https://developer.algorand.org/docs/get-details/conduit/
 
 This template project provides you with everything to get started with a
 Conduit plugin. This includes:
-* boilerplate implementations of each plugin, registered and ready to use.
-* integration test to quickly run your plugin.
-* release process to cross compiled artifacts and docker images.
+* Boilerplate implementations of each plugin.
+* Main function that registers them in a binary.
+* Scripts to get the stack up and running with a node.
+* Release process to distribute your plugin.
 
 ### Boilerplate
 
@@ -91,10 +92,9 @@ config:
 
 ### Testing
 
-A simple configuration is available to quickly launch your project. The
-`make run` target will build your project, configure a data directory, and
-offer up a few commands for different ways to run it. See the terminal output
-of `make run` for details.
+A simple configuration is available to launch your project with a predefined
+configuration. Use `make run` and follow the instructions printed to the
+terminal.
 
 ### Release
 
