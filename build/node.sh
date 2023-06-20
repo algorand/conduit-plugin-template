@@ -35,10 +35,10 @@ else
   # 2. Set algod address.
   # 3. Set auth tokens.
   sed -i \
-    -e "s,mode: OFF,mode: ON," \
-    -e "s,netaddr: \"http:\/\/url:port\",netaddr: \"$ALGOD\"," \
-    -e "s, token: \"\", token: \"$TOKEN\"," \
-    -e "s,admin-token: \"\",admin-token: \"$ADMIN_TOKEN\"," \
+    -e "s,mode: OFF,mode: ON,
+    s,netaddr: \"http:\/\/url:port\",netaddr: \"$ALGOD\",
+    s, token: \"\", token: \"$TOKEN\",
+    s,admin-token: \"\",admin-token: \"$ADMIN_TOKEN\"," \
     $CONFIG_FILE
   echo "${bold_green}Configuration initialized at ${bold_blue}$CONFIG_FILE${reset}."
 fi
