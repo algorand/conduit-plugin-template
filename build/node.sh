@@ -44,6 +44,7 @@ else
 fi
 
 echo ""
+echo "RECOMMENDED: inspect the configuration ./run_data/conduit.yml"
 echo "1. Start a node with docker: ${bold_blue}make docker-node${reset}"
 echo "2. Run conduit: ${bold_blue}$CONDUIT -d $DATA_DIR${reset}"
 echo "   Optionally add ${bold_red}-r 28000000${reset} to start on a specific round."
