@@ -29,7 +29,7 @@ Once you've selected what type of plugin you want to implement, you can start
 writing code. Open this project in your preferred Go IDE and navigate to the
 `plugin` package.
 
-The different lifecycle phases are implemented as different functions on the
+The different life cycle phases are implemented as different functions on the
 interface. For more details on this see the [Development](https://github.com/algorand/conduit/blob/master/docs/Development.md) documentation.
 
 ### Build
