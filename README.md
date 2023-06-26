@@ -18,16 +18,18 @@ Conduit plugin. This includes:
 
 ## How to use this repo
 
-The most important step is deciding which type of plugin you should use to
+Before anything else, you must decide which type of plugin you should use to
 implement your idea. An `exporter` is good for sending data to a an external
 resource, such as a database or application. `processor` plugins are useful
 for applying rules that filter transactions.
 
 ### Code
 
-Once you've selected what type of plugin you want to implement, you can start
-writing code. Open this project in your preferred Go IDE and navigate to the
-`plugin` package.
+Open the project root in your preferred Go IDE and navigate to the `plugin` package.
+Here you'll find templates for the different types of plugins. They have no functionality,
+but you'll find some `TODO` comments to identify things you should modify. In particular
+you should add configuration parameters and implement the init and data pipeline
+functions.
 
 The different life cycle phases are implemented as different functions on the
 interface. For more details on this see the [Development](https://github.com/algorand/conduit/blob/master/docs/Development.md) documentation.
@@ -38,7 +40,7 @@ A main function is provided at `cmd/conduit/main.go`. It's configured to load
 the plugin templates along with the built-in plugins located in the Conduit
 repository.
 
-To build is a standard operation, run it with: `make conduit`
+Build with: `make conduit`
 
 This places the `conduit` binary at the project root.
 
@@ -49,10 +51,11 @@ Verify that your plugin(s) are listed in the resulting binary: `./conduit list`
 Just like the released version of Conduit, a `config.yml` file is required and
 must be configured. An Algorand node is also required as a data source.
 
-For convenience, consider running your node with docker. This makes it easy to
-configure the network you'll connect to and the API tokens. Modify the
-following command to suite your needs. Note that you can leave out the
-`NETWORK` option to start a private network:
+For convenience, consider running your node with docker. It provides methods
+to configure the network you'll connect to, setup API tokens, and automatically
+configure the node for Conduit. Modify the following command to suite your
+needs. Note that you can leave out the `NETWORK` option to start a private
+network:
 ```
 docker run -d -p 4190:8080 --name conduit-template-follower \
   -e ADMIN_TOKEN=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa \
