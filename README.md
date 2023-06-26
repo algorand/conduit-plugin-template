@@ -9,8 +9,8 @@ and should be modified.
 
 ## Overview
 
-This template project provides you with everything to get started with a
-Conduit plugin. This includes:
+This template project provides you with everything to get started with building
+a Conduit plugin. This includes:
 * Boilerplate implementations of each plugin.
 * Main function that registers them in a binary.
 * Scripts to get the stack up and running with a node.
@@ -65,12 +65,15 @@ docker run -d -p 4190:8080 --name conduit-template-follower \
   algorand/algod:stable
 ```
 
-With the above config you can configure your conduit data directory:
+In the command here the processor and exporter templates are enabled. You may
+choose to enable just one, or neither if you've renamed the plugin to be unique
+for your project:
 ```
 ./conduit init --importer algod --processors processor_template --exporter exporter_template -d conduit_data
 ```
 
-Fill in the algod address and tokens:
+Fill in the algod address and tokens, this uses the algod config from the
+docker command above:
 ```
 sed -i \
   -e "s,mode: OFF,mode: ON,
